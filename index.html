@@ -271,7 +271,7 @@
           <textarea id="promptInput" placeholder="Write in English or Afrikaans... (Enter to send, Shift+Enter for new line)"></textarea>
           <button type="button" class="primary-btn" id="sendBtn">Send</button>
         </div>
-        <div class="status-note" id="statusNote">Grid layout active · Drop files or attach scripts, quotes, audio, images, or PDFs.</div>
+        <div class="status-note" id="statusNote">Model: gemini-3.8-flash · Drop files or attach scripts, quotes, audio, images, or PDFs.</div>
       </div>
     </div>
 
@@ -503,7 +503,7 @@
         var replyBodyEl = addMessage("agent", "Working on it...");
         statusNoteEl.textContent = "Sending to Gemini...";
 
-        fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + encodeURIComponent(apiKey), {
+        fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=" + encodeURIComponent(apiKey), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -515,7 +515,7 @@
         .then(function (data) {
           if (data.error) {
             replyBodyEl.textContent = "API error: " + (data.error.message || "Request failed");
-            statusNoteEl.textContent = "Check your API key or file format.";
+            statusNoteEl.textContent = "Check your API key or model name.";
             return;
           }
           var candidate = data.candidates && data.candidates[0];
