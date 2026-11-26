@@ -32,60 +32,189 @@
     .title { font-weight: 700; font-size: 15px; color: #e6b17a; }
     .subtitle { font-size: 12px; color: #9aa5b8; margin-left: 8px; }
     .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-    select, button, textarea {
-      font-family: inherit; color: #eef1f5; background-color: #1e2530;
-      border: 1px solid #323c4f; border-radius: 6px;
+    select, button, textarea, input[type="password"], input[type="text"] {
+      font-family: inherit;
+      color: #eef1f5;
+      background-color: #1e2530;
+      border: 1px solid #323c4f;
+      border-radius: 6px;
     }
-    select, button { padding: 8px 12px; font-size: 13px; cursor: pointer; }
+    select, button {
+      padding: 8px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
     button:hover, select:hover { border-color: #e6b17a; }
     .primary-btn {
-      background-color: #e6b17a; color: #101318; border-color: #e6b17a;
-      font-weight: 700; padding: 10px 18px;
+      background-color: #e6b17a;
+      color: #101318;
+      border-color: #e6b17a;
+      font-weight: 700;
+      padding: 10px 18px;
+    }
+    .key-bar {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background-color: #1a202c;
+      border-bottom: 1px solid #2c3648;
+      font-size: 13px;
+    }
+    .key-bar.open { display: flex; flex-wrap: wrap; }
+    .key-bar input {
+      flex: 1;
+      min-width: 220px;
+      padding: 8px 10px;
+      font-size: 13px;
     }
     .desk-grid {
-      flex: 1; display: grid; grid-template-columns: 220px 1fr 270px;
+      flex: 1;
+      display: grid;
+      grid-template-columns: 220px 1fr 270px;
       min-height: calc(100vh - 58px);
     }
-    .panel-left { background-color: #13171f; border-right: 1px solid #262e3d; padding: 14px; }
-    .panel-center { display: flex; flex-direction: column; background-color: #0e1116; min-width: 0; }
-    .panel-center.drag-over { outline: 2px dashed #e6b17a; outline-offset: -6px; }
-    .panel-right { background-color: #13171f; border-left: 1px solid #262e3d; padding: 14px; }
+    .panel-left {
+      background-color: #13171f;
+      border-right: 1px solid #262e3d;
+      padding: 14px;
+    }
+    .panel-center {
+      display: flex;
+      flex-direction: column;
+      background-color: #0e1116;
+      min-width: 0;
+    }
+    .panel-center.drag-over {
+      outline: 2px dashed #e6b17a;
+      outline-offset: -6px;
+    }
+    .panel-right {
+      background-color: #13171f;
+      border-left: 1px solid #262e3d;
+      padding: 14px;
+    }
     .sec-title {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
-      text-transform: uppercase; color: #8f9bb0; margin-bottom: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #8f9bb0;
+      margin-bottom: 10px;
     }
     .preset-btn {
-      display: block; width: 100%; text-align: left; padding: 9px 10px;
-      margin-bottom: 8px; font-size: 12px; line-height: 1.35; background-color: #1a202b;
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 9px 10px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      line-height: 1.35;
+      background-color: #1a202b;
     }
-    .messages { flex: 1; padding: 18px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+    .messages {
+      flex: 1;
+      padding: 18px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
     .msg {
-      max-width: 760px; padding: 12px 15px; border-radius: 8px;
-      line-height: 1.55; font-size: 14px; white-space: pre-wrap; word-break: break-word;
+      max-width: 760px;
+      padding: 12px 15px;
+      border-radius: 8px;
+      line-height: 1.55;
+      font-size: 14px;
+      white-space: pre-wrap;
+      word-break: break-word;
     }
-    .msg.user { align-self: flex-end; background-color: #212d3f; border: 1px solid #354966; }
-    .msg.agent { align-self: flex-start; background-color: #161b24; border: 1px solid #273040; }
-    .msg-role { font-size: 11px; font-weight: 700; color: #e6b17a; margin-bottom: 5px; text-transform: uppercase; }
-    .files-bar { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 18px 10px 18px; }
+    .msg.user {
+      align-self: flex-end;
+      background-color: #212d3f;
+      border: 1px solid #354966;
+    }
+    .msg.agent {
+      align-self: flex-start;
+      background-color: #161b24;
+      border: 1px solid #273040;
+    }
+    .msg-role {
+      font-size: 11px;
+      font-weight: 700;
+      color: #e6b17a;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    .files-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 18px 10px 18px;
+    }
     .files-bar:empty { display: none; }
     .file-chip {
-      display: inline-flex; align-items: center; gap: 8px; background-color: #1f2734;
-      border: 1px solid #354156; border-radius: 999px; padding: 4px 10px; font-size: 12px; color: #e6b17a;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #1f2734;
+      border: 1px solid #354156;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: #e6b17a;
     }
-    .file-chip button { background: none; border: none; color: #ff8282; padding: 0 2px; font-weight: 700; }
-    .composer-box { padding: 12px 18px 16px 18px; background-color: #151921; border-top: 1px solid #262e3d; }
-    .composer-row { display: flex; gap: 10px; align-items: flex-end; }
+    .file-chip button {
+      background: none;
+      border: none;
+      color: #ff8282;
+      padding: 0 2px;
+      font-weight: 700;
+    }
+    .composer-box {
+      padding: 12px 18px 16px 18px;
+      background-color: #151921;
+      border-top: 1px solid #262e3d;
+    }
+    .composer-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
     textarea {
-      flex: 1; min-width: 0; padding: 10px 12px; font-size: 14px;
-      line-height: 1.45; height: 52px; max-height: 150px; resize: vertical;
+      flex: 1;
+      min-width: 0;
+      padding: 10px 12px;
+      font-size: 14px;
+      line-height: 1.45;
+      height: 52px;
+      max-height: 150px;
+      resize: vertical;
     }
-    textarea:focus { outline: none; border-color: #e6b17a; }
-    .status-note { margin-top: 6px; font-size: 11px; color: #8b97ad; }
+    textarea:focus, input:focus {
+      outline: none;
+      border-color: #e6b17a;
+    }
+    .status-note {
+      margin-top: 6px;
+      font-size: 11px;
+      color: #8b97ad;
+    }
     .move-item {
-      background-color: #1a202b; border: 1px solid #2b3446; border-left: 3px solid #e6b17a;
-      border-radius: 6px; padding: 10px; margin-bottom: 8px; font-size: 13px; line-height: 1.45;
+      background-color: #1a202b;
+      border: 1px solid #2b3446;
+      border-left: 3px solid #e6b17a;
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      line-height: 1.45;
     }
-    .move-item button { margin-top: 8px; padding: 4px 9px; font-size: 11px; }
+    .move-item button {
+      margin-top: 8px;
+      padding: 4px 9px;
+      font-size: 11px;
+    }
     @media (max-width: 860px) {
       .desk-grid { grid-template-columns: 1fr; min-height: auto; }
       .panel-left, .panel-right { border: none; border-top: 1px solid #262e3d; }
@@ -116,6 +245,13 @@
     </div>
   </div>
 
+  <div class="key-bar" id="keyBar">
+    <span>Gemini API Key:</span>
+    <input type="password" id="keyField" placeholder="Paste AIza... key here" />
+    <button type="button" class="primary-btn" id="saveKeyBtn" style="padding:7px 14px; font-size:12px;">Save</button>
+    <button type="button" id="closeKeyBtn" style="padding:7px 12px; font-size:12px;">Hide</button>
+  </div>
+
   <div class="desk-grid">
     <div class="panel-left">
       <div class="sec-title">Quick Prompts</div>
@@ -128,7 +264,7 @@
     <div class="panel-center" id="panelCenter">
       <div class="messages" id="messages">
         <div class="msg agent">
-          <div class="msg-role">Chief of Staff</div>Ready. Drag a file here or click Attach File, pick a department, or hit Brief Me to start.
+          <div class="msg-role">Chief of Staff</div>Ready. Click API Key if you haven't saved your key yet, attach a file or type a prompt, and hit Send.
         </div>
       </div>
       <div class="files-bar" id="filesBar"></div>
@@ -137,7 +273,7 @@
           <textarea id="promptInput" placeholder="Write in English or Afrikaans... (Enter to send, Shift+Enter for new line)"></textarea>
           <button type="button" class="primary-btn" id="sendBtn">Send</button>
         </div>
-        <div class="status-note" id="statusNote">Auto-Fallback Engine Active · Drop files or attach scripts, quotes, audio, images, or PDFs.</div>
+        <div class="status-note" id="statusNote">Ready · Click Send or press Enter.</div>
       </div>
     </div>
 
@@ -157,7 +293,7 @@
       ].join("\n");
 
       var KEY_STORAGE = "johann_agent_gemini_key";
-      var MODELS = ["gemini-1.5-flash", "gemini-2.0-flash", "gemini-3.8-flash"];
+      var MODELS = ["gemini-3.8-flash", "gemini-2.5-flash", "gemini-2.0-flash"];
       var pendingFiles = [];
       var nextMoves = [];
 
@@ -169,13 +305,29 @@
       var movesListEl = document.getElementById("movesList");
       var panelCenterEl = document.getElementById("panelCenter");
       var statusNoteEl = document.getElementById("statusNote");
+      var keyBarEl = document.getElementById("keyBar");
+      var keyFieldEl = document.getElementById("keyField");
+
+      function setStatus(msg) {
+        statusNoteEl.textContent = msg;
+      }
 
       function getApiKey() {
-        try { return localStorage.getItem(KEY_STORAGE) || ""; } catch (e) { return ""; }
+        try { return (localStorage.getItem(KEY_STORAGE) || "").trim(); } catch (e) { return ""; }
       }
 
       function setApiKey(val) {
-        try { localStorage.setItem(KEY_STORAGE, val); } catch (e) {}
+        try { localStorage.setItem(KEY_STORAGE, (val || "").trim()); } catch (e) {}
+      }
+
+      function openKeyBar() {
+        keyFieldEl.value = getApiKey();
+        keyBarEl.classList.add("open");
+        keyFieldEl.focus();
+      }
+
+      function closeKeyBar() {
+        keyBarEl.classList.remove("open");
       }
 
       function addMessage(role, text, fileNames) {
@@ -261,11 +413,13 @@
       function ingestFileList(rawList) {
         var list = Array.prototype.slice.call(rawList || []);
         if (!list.length) return;
+        setStatus("Reading " + list.length + " file(s)...");
         Promise.all(list.map(readSingleFile)).then(function (parsed) {
           pendingFiles = pendingFiles.concat(parsed);
           renderFiles();
-          statusNoteEl.textContent = "Staged " + pendingFiles.length + " file(s) for analysis.";
+          setStatus("Staged " + pendingFiles.length + " file(s).");
         }).catch(function (err) {
+          setStatus("Upload error.");
           addMessage("agent", "Upload error: " + err.message);
         });
       }
@@ -277,4 +431,208 @@
 
       panelCenterEl.addEventListener("dragover", function (e) {
         e.preventDefault();
-        panelCenterEl.classList.add("drag-over
+        panelCenterEl.classList.add("drag-over");
+      });
+
+      panelCenterEl.addEventListener("dragleave", function () {
+        panelCenterEl.classList.remove("drag-over");
+      });
+
+      panelCenterEl.addEventListener("drop", function (e) {
+        e.preventDefault();
+        panelCenterEl.classList.remove("drag-over");
+        if (e.dataTransfer && e.dataTransfer.files) {
+          ingestFileList(e.dataTransfer.files);
+        }
+      });
+
+      function extractNextMoves(replyText) {
+        var idx = replyText.toLowerCase().indexOf("next moves");
+        if (idx === -1) return;
+        var lines = replyText.slice(idx).split(/\r?\n/);
+        lines.forEach(function (line) {
+          var cleaned = line.replace(/^.*next moves[:\s-]*/i, "").replace(/^[\s\-*•\d.)]+/, "").trim();
+          if (cleaned.length > 4 && nextMoves.indexOf(cleaned) === -1) {
+            nextMoves.unshift(cleaned);
+          }
+        });
+        nextMoves = nextMoves.slice(0, 12);
+        renderMoves();
+      }
+
+      function renderMoves() {
+        movesListEl.innerHTML = "";
+        nextMoves.forEach(function (m, i) {
+          var card = document.createElement("div");
+          card.className = "move-item";
+          card.appendChild(document.createTextNode(m));
+
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = "Done";
+          btn.addEventListener("click", function () {
+            nextMoves.splice(i, 1);
+            renderMoves();
+          });
+
+          card.appendChild(btn);
+          movesListEl.appendChild(card);
+        });
+      }
+
+      function sendPrompt(overrideText) {
+        var text = typeof overrideText === "string" ? overrideText : promptEl.value.trim();
+        var apiKey = getApiKey();
+
+        if (!apiKey) {
+          openKeyBar();
+          setStatus("Enter and save your Gemini API key above, then click Send.");
+          return;
+        }
+
+        if (!text && pendingFiles.length === 0) {
+          setStatus("Type a message or attach a file before clicking Send.");
+          promptEl.focus();
+          return;
+        }
+
+        var fileNames = pendingFiles.map(function (f) { return f.name; });
+        addMessage("user", text || "[Uploaded files for review]", fileNames);
+
+        var filesToSend = pendingFiles.slice();
+        if (typeof overrideText !== "string") {
+          promptEl.value = "";
+        }
+        pendingFiles = [];
+        renderFiles();
+
+        var parts = [];
+        var combinedPrompt = "[Department: " + deptEl.value + "]\n" + (text || "Analyze the attached files.");
+
+        filesToSend.forEach(function (f) {
+          if (f.kind === "text") {
+            combinedPrompt += "\n\n--- FILE: " + f.name + " ---\n" + f.textContent.slice(0, 60000);
+          } else if (f.base64) {
+            parts.push({ inlineData: { mimeType: f.mimeType, data: f.base64 } });
+          }
+        });
+
+        parts.unshift({ text: combinedPrompt });
+        var replyBodyEl = addMessage("agent", "Working on it...");
+
+        (function tryModel(idx) {
+          if (idx >= MODELS.length) {
+            replyBodyEl.textContent = "All tried models returned errors or high demand. Please try again in a moment.";
+            setStatus("Request failed across models.");
+            return;
+          }
+          var model = MODELS[idx];
+          setStatus("Sending via " + model + "...");
+
+          fetch("https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + encodeURIComponent(apiKey), {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
+              contents: [{ role: "user", parts: parts }]
+            })
+          })
+          .then(function (res) {
+            return res.json().then(function (data) {
+              return { ok: res.ok, status: res.status, data: data };
+            });
+          })
+          .then(function (result) {
+            if (result.ok && result.data && !result.data.error) {
+              var candidate = result.data.candidates && result.data.candidates[0];
+              var outParts = candidate && candidate.content && candidate.content.parts ? candidate.content.parts : [];
+              var replyText = outParts.map(function (p) { return p.text || ""; }).join("\n").trim();
+              replyBodyEl.textContent = replyText || "No response text returned.";
+              messagesEl.scrollTop = messagesEl.scrollHeight;
+              setStatus("Answered by " + model + ".");
+              if (replyText) extractNextMoves(replyText);
+              return;
+            }
+            var errMsg = (result.data && result.data.error && result.data.error.message) || ("HTTP " + result.status);
+            if (idx + 1 < MODELS.length) {
+              tryModel(idx + 1);
+            } else {
+              replyBodyEl.textContent = "API error (" + model + "): " + errMsg;
+              setStatus("API error: " + errMsg);
+            }
+          })
+          .catch(function (err) {
+            if (idx + 1 < MODELS.length) {
+              tryModel(idx + 1);
+            } else {
+              replyBodyEl.textContent = "Network error: " + err.message;
+              setStatus("Network error: " + err.message);
+            }
+          });
+        })(0);
+      }
+
+      document.querySelectorAll(".preset-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var p = btn.getAttribute("data-prompt") || "";
+          if (pendingFiles.length > 0 || promptEl.value.trim()) {
+            sendPrompt((promptEl.value.trim() ? promptEl.value.trim() + "\n\n" : "") + p);
+          } else {
+            promptEl.value = p;
+            promptEl.focus();
+            setStatus("Prompt loaded into box — click Send or attach a file first.");
+          }
+        });
+      });
+
+      document.getElementById("attachBtn").addEventListener("click", function () {
+        fileInputEl.click();
+      });
+
+      document.getElementById("keyBtn").addEventListener("click", function () {
+        if (keyBarEl.classList.contains("open")) {
+          closeKeyBar();
+        } else {
+          openKeyBar();
+        }
+      });
+
+      document.getElementById("saveKeyBtn").addEventListener("click", function () {
+        var val = keyFieldEl.value.trim();
+        setApiKey(val);
+        closeKeyBar();
+        setStatus(val ? "API key saved locally." : "API key cleared.");
+      });
+
+      document.getElementById("closeKeyBtn").addEventListener("click", closeKeyBar);
+
+      document.getElementById("briefBtn").addEventListener("click", function () {
+        sendPrompt("brief me");
+      });
+
+      document.getElementById("clearBtn").addEventListener("click", function () {
+        messagesEl.innerHTML = "";
+        addMessage("agent", "Cleared. Ready for the next task or upload.");
+        setStatus("Chat cleared.");
+      });
+
+      document.getElementById("sendBtn").addEventListener("click", function () {
+        sendPrompt();
+      });
+
+      promptEl.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          sendPrompt();
+        }
+      });
+
+      if (getApiKey()) {
+        setStatus("API key found in browser storage · Ready.");
+      } else {
+        setStatus("No API key saved yet · Click API Key at top right.");
+      }
+    })();
+  </script>
+</body>
+</html>
